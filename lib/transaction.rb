@@ -9,5 +9,6 @@ class Transaction
   def add_credit(amount, balance = 0)
     @saved_transaction[:credit] = amount
     @saved_transaction[:balance] = balance += amount
+    @saved_transaction[:date] = DateTime.now.strftime("%d/%m/%Y")
   end
 end
