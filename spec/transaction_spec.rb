@@ -8,4 +8,11 @@ describe Transaction do
     end
   end
 
+  describe '#add_credit' do
+    it 'adds a credit when client pay the money in' do
+      subject.add_credit(40)
+      expect(subject.saved_transaction[:credit]).to eq 40
+    end
+  end
+
 end

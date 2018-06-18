@@ -5,4 +5,8 @@ class Transaction
   def initialize
     @saved_transaction = {}
   end
+
+  def add_credit(amount)
+    @saved_transaction[:credit] = amount
+  end
 end
