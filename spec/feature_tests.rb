@@ -3,6 +3,7 @@
 require './lib/transaction'
 
 transaction = Transaction.new
+account = Account.new
 
 def add_credit_transaction
   transaction = Transaction.new
@@ -17,6 +18,7 @@ def add_debit_transaction
   transaction.add_debit(40)
   p transaction.saved_transaction[:debit]
   p transaction.saved_transaction[:balance]
+  p transaction.saved_transaction[:date]
 end
 
 add_credit_transaction
