@@ -1,3 +1,5 @@
+require 'date'
+
 class Transaction
 
   attr_reader :saved_transaction
@@ -12,7 +14,8 @@ class Transaction
     @saved_transaction[:date] = DateTime.now.strftime("%d/%m/%Y")
   end
 
-  def add_debit(amount)
+  def add_debit(amount, balance = 0)
     @saved_transaction[:debit] = amount
+    @saved_transaction[:balance] = balance -= amount
   end
 end

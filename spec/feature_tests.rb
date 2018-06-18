@@ -16,6 +16,7 @@ def add_debit_transaction
   transaction = Transaction.new
   transaction.add_debit(40)
   p transaction.saved_transaction[:debit]
+  p transaction.saved_transaction[:balance]
 end
 
 add_credit_transaction
