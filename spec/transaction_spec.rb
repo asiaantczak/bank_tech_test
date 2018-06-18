@@ -13,6 +13,11 @@ describe Transaction do
       subject.add_credit(40)
       expect(subject.saved_transaction[:credit]).to eq 40
     end
+
+    it 'adds a balance when client pay the money in' do
+      subject.add_credit(40)
+      expect(subject.saved_transaction[:balance]).to eq 40
+    end
   end
 
 end

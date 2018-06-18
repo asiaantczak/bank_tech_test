@@ -6,7 +6,8 @@ class Transaction
     @saved_transaction = {}
   end
 
-  def add_credit(amount)
+  def add_credit(amount, balance = 0)
     @saved_transaction[:credit] = amount
+    @saved_transaction[:balance] = balance += amount
   end
 end
