@@ -17,5 +17,6 @@ class Transaction
   def add_debit(amount, balance = 0)
     @saved_transaction[:debit] = amount
     @saved_transaction[:balance] = balance -= amount
+    @saved_transaction[:date] = DateTime.now.strftime("%d/%m/%Y")
   end
 end

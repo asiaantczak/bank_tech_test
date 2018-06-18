@@ -36,6 +36,12 @@ describe Transaction do
       subject.add_debit(40)
       expect(subject.saved_transaction[:balance]).to eq -40
     end
+
+    it 'adds a date to the transaction' do
+      date = DateTime.now.strftime("%d/%m/%Y")
+      subject.add_debit(40)
+      expect(subject.saved_transaction[:date]).to eq date
+    end
   end
 
 
