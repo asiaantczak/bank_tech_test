@@ -12,4 +12,11 @@ def add_credit_transaction
   p transaction.saved_transaction[:date]
 end
 
+def add_debit_transaction
+  transaction = Transaction.new
+  transaction.add_debit(40)
+  p transaction.saved_transaction[:debit]
+end
+
 add_credit_transaction
+add_debit_transaction

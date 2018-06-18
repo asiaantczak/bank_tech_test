@@ -26,4 +26,12 @@ describe Transaction do
     end
   end
 
+  describe "#add_debit" do
+    it 'adds a debit when client pay the money out' do
+      subject.add_debit(40)
+      expect(subject.saved_transaction[:debit]).to eq 40
+    end
+  end
+
+
 end
