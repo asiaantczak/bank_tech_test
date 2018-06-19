@@ -4,11 +4,13 @@ class Account
 
   def initialize
     @transactions_list = []
+    @account_balance = 0
   end
 
-  def make_deposit(amount)
+  def make_deposit(amount, balance)
+    @account_balance += amount
     transaction = Transaction.new
-    @transactions_list << transaction.add_credit(amount)
+    @transactions_list << transaction.add_credit(amount, @account_balance)
   end
 
 end
