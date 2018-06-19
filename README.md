@@ -97,3 +97,8 @@ $ irb
 Testing
 --------
 Rspec + feature tests
+
+Other gems used
+--------
+Rubocop for detecting styling offences
+SimpleCov for code coverage - (100.0%) covered
