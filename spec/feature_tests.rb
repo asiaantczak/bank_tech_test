@@ -6,20 +6,14 @@ transaction = Transaction.new
 account = Account.new
 statement = Statement.new
 
-def add_credit_transaction
+def create_credit_transaction
   transaction = Transaction.new
-  transaction.add_credit(40)
-  p transaction.saved_transaction[0][:credit]
-  p transaction.saved_transaction[0][:balance]
-  p transaction.saved_transaction[0][:date]
+  p transaction.create_credit_transaction(40)
 end
 
-def add_debit_transaction
+def create_debit_transaction
   transaction = Transaction.new
-  transaction.add_debit(40)
-  p transaction.saved_transaction[0][:debit]
-  p transaction.saved_transaction[0][:balance]
-  p transaction.saved_transaction[0][:date]
+  p transaction.create_debit_transaction(40)
 end
 
 def make_deposit_on_account
@@ -47,8 +41,8 @@ def print_account_statement
 end
 
 
-add_credit_transaction
-add_debit_transaction
-make_deposit_on_account
-withdraw_from_account
-print_account_statement
+create_credit_transaction
+create_debit_transaction
+# make_deposit_on_account
+# withdraw_from_account
+# print_account_statement

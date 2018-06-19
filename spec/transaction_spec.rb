@@ -2,45 +2,17 @@ require 'transaction'
 
 describe Transaction do
 
-  describe 'initalize' do
-    it 'has empty saved transaction property when initialized' do
-      expect(subject.saved_transaction).to eq []
+  describe '#create_credit_transaction' do
+    it 'creates credit transaction with credit, default balance and date' do
+      date = DateTime.now.strftime("%d/%m/%Y")
+      expect(subject.create_credit_transaction(40)).to eq({credit: "40.00", balance: "0.00", date: date})
     end
   end
 
-  describe '#add_credit' do
-    it 'adds a credit when client pay the money in' do
-      subject.add_credit(40)
-      expect(subject.saved_transaction[0][:credit]).to eq "40.00"
-    end
-
-    it 'adds a passed balance when client pay the money in' do
-      subject.add_credit(40, 40)
-      expect(subject.saved_transaction[0][:balance]).to eq "40.00"
-    end
-
-    it 'adds a date to the transaction' do
+  describe '#create_debit_transaction' do
+    it 'creates debit transaction with credit, default balance and date' do
       date = DateTime.now.strftime("%d/%m/%Y")
-      subject.add_credit(40)
-      expect(subject.saved_transaction[0][:date]).to eq date
-    end
-  end
-
-  describe "#add_debit" do
-    it 'adds a debit when client pay the money out' do
-      subject.add_debit(40)
-      expect(subject.saved_transaction[0][:debit]).to eq "40.00"
-    end
-
-    it 'adds a balance when client pay the money out' do
-      subject.add_debit(40, -40)
-      expect(subject.saved_transaction[0][:balance]).to eq "-40.00"
-    end
-
-    it 'adds a date to the transaction' do
-      date = DateTime.now.strftime("%d/%m/%Y")
-      subject.add_debit(40)
-      expect(subject.saved_transaction[0][:date]).to eq date
+      expect(subject.create_debit_transaction(40)).to eq({debit: "40.00", balance: "0.00", date: date})
     end
   end
 end
