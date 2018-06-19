@@ -21,7 +21,12 @@ class Account
   end
 
   def print_account_statement(statement = Statement.new)
-    list = @transactions_list.reverse.flatten
-    statement.print_statement(list)
+    statement.print_statement(reverse_transactions_order)
+  end
+
+  private
+
+  def reverse_transactions_order
+    @transactions_list.reverse
   end
 end
