@@ -11,12 +11,12 @@ describe Transaction do
   describe '#add_credit' do
     it 'adds a credit when client pay the money in' do
       subject.add_credit(40)
-      expect(subject.saved_transaction[0][:credit]).to eq 40
+      expect(subject.saved_transaction[0][:credit]).to eq "40.00"
     end
 
     it 'adds a passed balance when client pay the money in' do
       subject.add_credit(40, 40)
-      expect(subject.saved_transaction[0][:balance]).to eq 40
+      expect(subject.saved_transaction[0][:balance]).to eq "40.00"
     end
 
     it 'adds a date to the transaction' do
@@ -29,12 +29,12 @@ describe Transaction do
   describe "#add_debit" do
     it 'adds a debit when client pay the money out' do
       subject.add_debit(40)
-      expect(subject.saved_transaction[0][:debit]).to eq 40
+      expect(subject.saved_transaction[0][:debit]).to eq "40.00"
     end
 
     it 'adds a balance when client pay the money out' do
       subject.add_debit(40, -40)
-      expect(subject.saved_transaction[0][:balance]).to eq -40
+      expect(subject.saved_transaction[0][:balance]).to eq "-40.00"
     end
 
     it 'adds a date to the transaction' do
