@@ -25,14 +25,14 @@ end
 def make_deposit_on_account
   account = Account.new
   transaction = Transaction.new
-  account.make_deposit(30, 30)
+  account.make_deposit(30)
   p account.transactions_list[0]
 end
 
 def withdraw_from_account
   account = Account.new
   transaction = Transaction.new
-  account.withdraw(30, 30)
+  account.withdraw(30)
   p account.transactions_list[0]
 end
 
@@ -40,10 +40,10 @@ def print_account_statement
   account = Account.new
   transaction = Transaction.new
   statement = Statement.new
-  account.make_deposit(30, 30)
-  account.withdraw(10, 20)
-  list = account.transactions_list.flatten
-  p statement.print_statement(list)
+  account.make_deposit(30)
+  account.withdraw(10)
+  list = account.transactions_list
+  p account.print_account_statement
 end
 
 

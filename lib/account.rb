@@ -10,13 +10,13 @@ class Account
     @account_balance = 0
   end
 
-  def make_deposit(amount, balance)
+  def make_deposit(amount)
     @account_balance += amount
     transaction = Transaction.new
     @transactions_list << transaction.add_credit(amount, @account_balance)
   end
 
-  def withdraw(amount, balance)
+  def withdraw(amount)
     @account_balance -= amount
     transaction = Transaction.new
     @transactions_list << transaction.add_debit(amount, @account_balance)

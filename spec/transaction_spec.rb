@@ -43,6 +43,4 @@ describe Transaction do
       expect(subject.saved_transaction[0][:date]).to eq date
     end
   end
-
-
 end
