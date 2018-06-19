@@ -1,5 +1,4 @@
-class Statement
-
+class Statement # :nodoc:
   def print_statement(transactions)
     print_title
     transactions.each do |transaction|
@@ -16,5 +15,4 @@ class Statement
       date || credit || debit || balance
     TITLE
   end
-
 end
