@@ -14,11 +14,6 @@ describe Account do
       subject.make_deposit(30)
       expect(subject.transactions_list).to eq [{ credit: '30.00', balance: '30.00', date: date }]
     end
-
-    it 'updates transaction balance on the list' do
-      subject.make_deposit(30)
-      expect(subject.transactions_list).to eq [{ credit: '30.00', balance: '30.00', date: date }]
-    end
   end
 
   describe '#withdraw' do
