@@ -43,7 +43,7 @@ def print_account_statement
   account.make_deposit(30)
   account.withdraw(10)
   list = account.transactions_list
-  p account.print_account_statement
+  account.print_account_statement(statement)
 end
 
 

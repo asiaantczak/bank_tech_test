@@ -26,5 +26,4 @@ class Account
     list = @transactions_list.reverse.flatten
     statement.print_statement(list)
   end
-
 end

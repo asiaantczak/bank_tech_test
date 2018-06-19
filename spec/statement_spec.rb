@@ -6,7 +6,11 @@ describe Statement do
 
   describe '#print statement' do
     it "prints the account statement" do
-      expect(subject.print_statement(transactions_list)).to eq("date || credit || debit || balance\n19/06/2018 ||  || 10.00 || 20.00\n18/06/2018 || 30.00 ||  || 30.00\n")
+      expect { subject.print_statement(transactions_list) }.to output(<<-STATEMENT).to_stdout
+      date || credit || debit || balance
+      19/06/2018 ||  || 10.00 || 20.00
+      18/06/2018 || 30.00 ||  || 30.00
+      STATEMENT
     end
   end
 

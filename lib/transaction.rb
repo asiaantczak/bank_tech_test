@@ -15,4 +15,5 @@ class Transaction
   def add_debit(amount, balance = 0)
     @saved_transaction << { debit: '%.2f' % amount, balance: '%.2f' % balance, date: DateTime.now.strftime("%d/%m/%Y")}
   end
+
 end

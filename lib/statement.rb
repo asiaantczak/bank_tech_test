@@ -1,17 +1,20 @@
 class Statement
 
   def print_statement(transactions)
-    t_string = [print_title]
+    print_title
     transactions.each do |transaction|
-      t_string << "#{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}\n"
+      puts <<-STATEMENT
+      #{transaction[:date]} || #{transaction[:credit]} || #{transaction[:debit]} || #{transaction[:balance]}
+      STATEMENT
     end
-    t_string.join("")
   end
 
   private
 
   def print_title
-    title = "date || credit || debit || balance\n"
+    puts <<-TITLE
+      date || credit || debit || balance
+    TITLE
   end
 
 end
