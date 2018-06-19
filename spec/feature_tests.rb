@@ -40,7 +40,9 @@ def print_account_statement
   account = Account.new
   transaction = Transaction.new
   statement = Statement.new
-  list = account.transactions_list
+  account.make_deposit(30, 30)
+  account.withdraw(10, 20)
+  list = account.transactions_list.flatten
   p statement.print_statement(list)
 end
 

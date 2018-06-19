@@ -39,4 +39,13 @@ describe Account do
     end
   end
 
+  describe '#print_account_statement' do
+    it "prints all the transactions in reverese order and in seperate lines" do
+      balance = 0
+      subject.make_deposit(30, balance)
+      subject.withdraw(10, balance)
+      expect(subject.print_account_statement).to eq "date || credit || debit || balance\n19/06/2018 ||  || 10.00 || 20.00\n19/06/2018 || 30.00 ||  || 30.00\n"
+    end
+  end
+
 end

@@ -1,4 +1,5 @@
 require_relative './transaction'
+require_relative './statement'
 
 class Account
 
@@ -19,6 +20,11 @@ class Account
     @account_balance -= amount
     transaction = Transaction.new
     @transactions_list << transaction.add_debit(amount, @account_balance)
+  end
+
+  def print_account_statement(statement = Statement.new)
+    list = @transactions_list.reverse.flatten
+    statement.print_statement(list)
   end
 
 end
