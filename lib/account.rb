@@ -11,7 +11,7 @@ class Account
   end
 
   def make_deposit(amount, transaction = Transaction.new)
-    @account_balance += amount
+    update_deposit_balance(amount)
     @transactions_list << transaction.create_credit_transaction(amount, @account_balance)
   end
 
@@ -28,5 +28,9 @@ class Account
 
   def reverse_transactions_order
     @transactions_list.reverse
+  end
+
+  def update_deposit_balance(amount)
+    @account_balance += amount
   end
 end
