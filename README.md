@@ -22,23 +22,25 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 ### User Stories
-
+```
 As a bank account holder
 So I can keep my money in a bank
-I want to make a make a deposit
-
+I want to be able to make a deposit
+```
+```
 As a bank account holder
 So I can spend my money and enjoy my life
 I want to withdraw cash from my account
-
+```
+```
 As a bank account holder
 So I can see how much money I have left on my account
 I want to see the balance of each transaction
-
+```
+```
 As a bank account holder
 So I can see all the transactions on my account
 I want to be able to print the account statement
-
 ```
 My approach
 ---------
