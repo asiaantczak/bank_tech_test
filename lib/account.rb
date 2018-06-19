@@ -6,4 +6,9 @@ class Account
     @transactions_list = []
   end
 
+  def make_deposit(amount)
+    transaction = Transaction.new
+    @transactions_list << transaction.add_credit(amount)
+  end
+
 end
