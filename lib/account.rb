@@ -10,16 +10,14 @@ class Account
     @account_balance = 0
   end
 
-  def make_deposit(amount)
+  def make_deposit(amount, transaction = Transaction.new)
     @account_balance += amount
-    transaction = Transaction.new
-    @transactions_list << transaction.add_credit(amount, @account_balance)
+    @transactions_list << transaction.create_credit_transaction(amount, @account_balance)
   end
 
-  def withdraw(amount)
+  def withdraw(amount, transaction = Transaction.new)
     @account_balance -= amount
-    transaction = Transaction.new
-    @transactions_list << transaction.add_debit(amount, @account_balance)
+    @transactions_list << transaction.create_debit_transaction(amount, @account_balance)
   end
 
   def print_account_statement(statement = Statement.new)

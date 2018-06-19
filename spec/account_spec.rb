@@ -13,19 +13,19 @@ describe Account do
   describe '#make deposit' do
     it 'adds credit transaction to transactions_list' do
       subject.make_deposit(30)
-      expect(subject.transactions_list[0]).to eq [{credit: "30.00", balance: "30.00", date: date }]
+      expect(subject.transactions_list).to eq [{credit: "30.00", balance: "30.00", date: date }]
     end
 
     it 'updates transaction balance on the list' do
       subject.make_deposit(30)
-      expect(subject.transactions_list[0]).to eq [{credit: "30.00", balance: "30.00", date: date }]
+      expect(subject.transactions_list).to eq [{credit: "30.00", balance: "30.00", date: date }]
     end
   end
 
   describe '#withdraw' do
     it 'adds debit to transaction' do
       subject.withdraw(30)
-      expect(subject.transactions_list[0]).to eq [{debit: "30.00", balance: "-30.00", date: date }]
+      expect(subject.transactions_list).to eq [{debit: "30.00", balance: "-30.00", date: date }]
     end
   end
 
@@ -34,7 +34,7 @@ describe Account do
       subject.make_deposit(30)
       subject.make_deposit(40)
       subject.withdraw(10)
-      expect(subject.transactions_list.last).to eq [{debit: "10.00", balance: "60.00", date: date}]
+      expect(subject.transactions_list.last).to eq({debit: "10.00", balance: "60.00", date: date})
     end
   end
 
