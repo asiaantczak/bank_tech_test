@@ -22,11 +22,22 @@ def add_debit_transaction
   p transaction.saved_transaction[0][:date]
 end
 
-def make_deposit
+def make_deposit_on_account
   account = Account.new
   transaction = Transaction.new
-  p transactions_list.credit
+  account.make_deposit(30, 30)
+  p account.transactions_list
 end
+
+def withdraw_from_account
+  account = Account.new
+  transaction = Transaction.new
+  account.withdraw(30, 30)
+  p account.transactions_list
+end
+
 
 add_credit_transaction
 add_debit_transaction
+make_deposit_on_account
+withdraw_from_account

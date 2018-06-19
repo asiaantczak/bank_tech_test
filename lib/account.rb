@@ -13,4 +13,10 @@ class Account
     @transactions_list << transaction.add_credit(amount, @account_balance)
   end
 
+  def withdraw(amount, balance)
+    @account_balance -= amount
+    transaction = Transaction.new
+    @transactions_list << transaction.add_debit(amount, @account_balance)
+  end
+
 end
