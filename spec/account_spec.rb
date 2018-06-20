@@ -2,27 +2,40 @@ require 'account'
 
 describe Account do
   date = Time.now.strftime('%d/%m/%Y')
+  let(:transaction_log) { double :transaction_log, transactions_list: [] }
+  let(:account) { described_class.new(transaction_log) }
+  let(:transaction) { double :transaction }
 
   describe '#make deposit' do
-    it 'adds credit and balance to transaction' do
-      subject.make_deposit(30)
-      expect(subject.transactions_list).to eq [{ credit: '30.00', balance: '30.00', date: date }]
+    it 'saves credit transaction on transaction log' do
+      expect(transaction_log).to receive(:save_transaction)
+      account.make_deposit(30)
+    end
+
+    it 'creates credit transaction' do
+      expect(transaction).to receive(:create_credit_transaction)
+      subject.make_deposit(30, transaction)
     end
   end
 
   describe '#withdraw' do
-    it 'adds debit to transaction' do
-      subject.withdraw(30)
-      expect(subject.transactions_list).to eq [{ debit: '30.00', balance: '-30.00', date: date }]
+    it 'saves debit transaction on transaction log' do
+      expect(transaction_log).to receive(:save_transaction)
+      account.withdraw(30)
+    end
+
+    it 'creates debit transaction' do
+      expect(transaction).to receive(:create_debit_transaction)
+      subject.withdraw(30, transaction)
     end
   end
 
-  describe 'balance' do
-    it 'calculates correct balance for different transactions' do
+  describe '#account_balance' do
+    it 'calculates correct balance after few transactions' do
       subject.make_deposit(30)
       subject.make_deposit(40)
       subject.withdraw(10)
-      expect(subject.transactions_list.last).to eq(debit: '10.00', balance: '60.00', date: date)
+      expect(subject.account_balance).to eq 60
     end
   end
 

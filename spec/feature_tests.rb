@@ -2,10 +2,11 @@
 require './lib/account'
 require './lib/statement'
 require './lib/transaction'
+require './lib/transaction_log'
 
 def create_credit_transaction
   transaction = Transaction.new
-  transaction.create_credit_transaction(40)
+  p transaction.create_credit_transaction(40)
 end
 
 def create_debit_transaction
@@ -15,14 +16,16 @@ end
 
 def make_deposit_on_account
   account = Account.new
+  transaction_log = TransactionLog.new
   account.make_deposit(30)
-  p account.transactions_list
+  p transaction_log.transactions_list
 end
 
 def withdraw_from_account
   account = Account.new
+  transaction_log = TransactionLog.new
   account.withdraw(30)
-  p account.transactions_list
+  p account[:transaction_log]
 end
 
 def print_account_statement
