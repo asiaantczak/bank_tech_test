@@ -45,10 +45,12 @@ I want to be able to print the account statement
 My approach
 ---------
 
-I have created 3 classes :
-* Transaction: register single transaction for credit or debit;
-* Account: saves all the transactions, updates balance and print the statement;
-* Statement: gives the statement the required format
+I have created 4 classes :
+* Transaction: register single transaction for credit or debit.
+  I decided to use hashes, and not initialise method with properties, to be able to create 2 different types of transactions - credit and debit;
+* TransactionLog: stores all the transactions;
+* Account: updates balance, also uses other classes to make (Transaction Class) and save the transaction (TransactionLog) and print statement;
+* Statement: gives the statement the required format;
 
 Steps
 -------
@@ -69,8 +71,8 @@ $ irb
 ```
 $ irb
 2.5.0 :002 > account = Account.new
- => #<Account:0x00007fdcc690d440 @transactions_list=[], @account_balance=0>
-```
+ => #<Account:0x00007f803c11c308 @account_balance=0, @transaction_log=#<TransactionLog:0x00007f803c11c2e0 @transactions_list=[]>>
+ ```
 
 Main methods
 ---------
@@ -81,18 +83,17 @@ Main methods
 Example
 ```
 $ irb
-2.5.0 :003 > account.make_deposit(30)
- => [[{:credit=>"30.00", :balance=>"30.00", :date=>"19/06/2018"}]]
+2.5.0 :003 > account.make_deposit(500)
+ => [{:credit=>"500.00", :balance=>"500.00", :date=>"20/06/2018"}]
 
-2.5.0 :004 > account.withdraw(10)
- => [[{:credit=>"30.00", :balance=>"30.00", :date=>"19/06/2018"}], [{:debit=>"10.00", :balance=>"20.00", :date=>"19/06/2018"}]]
+2.5.0 :004 > account.withdraw(100)
+=> [{:credit=>"500.00", :balance=>"500.00", :date=>"20/06/2018"}, {:debit=>"100.00", :balance=>"400.00", :date=>"20/06/2018"}]
 
-2.5.0 :005 > account.print_account_statement
-       date || credit || debit || balance
-       19/06/2018 ||  || 10.00 || 20.00
-       19/06/2018 || 30.00 ||  || 30.00
-  => [{:debit=>"10.00", :balance=>"20.00", :date=>"19/06/2018"}, {:credit=>"30.00", :balance=>"30.00", :date=>"19/06/2018"}]
-
+2.5.0 :006 > account.print_account_statement
+      date || credit || debit || balance
+      20/06/2018 ||  || 100.00 || 400.00
+      20/06/2018 || 500.00 ||  || 500.00
+=> [{:debit=>"100.00", :balance=>"400.00", :date=>"20/06/2018"}, {:credit=>"500.00", :balance=>"500.00", :date=>"20/06/2018"}]
 ```
 Testing
 --------
@@ -100,5 +101,5 @@ Rspec + feature tests
 
 Other gems used
 --------
-Rubocop for detecting styling offences
+Rubocop for detecting style offences
 SimpleCov for code coverage - (100.0%) covered
