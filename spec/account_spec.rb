@@ -3,14 +3,8 @@ require 'account'
 describe Account do
   date = Time.now.strftime('%d/%m/%Y')
 
-  describe 'initialize' do
-    it 'has got an empty list of transactions when initialized' do
-      expect(subject.transactions_list).to eq []
-    end
-  end
-
   describe '#make deposit' do
-    it 'adds credit transaction to transactions_list' do
+    it 'adds credit and balance to transaction' do
       subject.make_deposit(30)
       expect(subject.transactions_list).to eq [{ credit: '30.00', balance: '30.00', date: date }]
     end

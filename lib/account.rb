@@ -1,11 +1,10 @@
 require_relative './transaction'
 require_relative './statement'
+require_relative './transaction_log'
 
 class Account # :nodoc:
-  attr_reader :transactions_list
 
   def initialize
-    @transactions_list = []
     @account_balance = 0
   end
 
