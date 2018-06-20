@@ -38,8 +38,8 @@ describe Account do
       subject.withdraw(10)
       expect { subject.print_account_statement }.to output(<<-STATEMENT).to_stdout
       date || credit || debit || balance
-      19/06/2018 ||  || 10.00 || 20.00
-      19/06/2018 || 30.00 ||  || 30.00
+      #{date} ||  || 10.00 || 20.00
+      #{date} || 30.00 ||  || 30.00
       STATEMENT
     end
   end
