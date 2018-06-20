@@ -18,14 +18,14 @@ def make_deposit_on_account
   account = Account.new
   transaction_log = TransactionLog.new
   account.make_deposit(30)
-  p transaction_log.transactions_list
+  p account.transaction_log.transactions_list
 end
 
 def withdraw_from_account
   account = Account.new
   transaction_log = TransactionLog.new
   account.withdraw(30)
-  p account[:transaction_log]
+  p account.transaction_log.transactions_list
 end
 
 def print_account_statement

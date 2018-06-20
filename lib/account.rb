@@ -3,7 +3,7 @@ require_relative './statement'
 require_relative './transaction_log'
 
 class Account # :nodoc:
-  attr_reader :account_balance
+  attr_reader :account_balance, :transaction_log
 
   def initialize(transaction_log = TransactionLog.new)
     @account_balance = 0
@@ -12,14 +12,14 @@ class Account # :nodoc:
 
   def make_deposit(amount, transaction = Transaction.new)
     update_credit_balance(amount)
-    t = transaction.create_credit_transaction(amount, @account_balance)
-    @transaction_log.save_transaction(t)
+    t = transaction.create_credit_transaction(amount, account_balance)
+    transaction_log.save_transaction(t)
   end
 
   def withdraw(amount, transaction = Transaction.new)
     update_debit_balance(amount)
-    t = transaction.create_debit_transaction(amount, @account_balance)
-    @transaction_log.save_transaction(t)
+    t = transaction.create_debit_transaction(amount, account_balance)
+    transaction_log.save_transaction(t)
   end
 
   def print_account_statement(statement = Statement.new)
@@ -29,7 +29,7 @@ class Account # :nodoc:
   private
 
   def reverse_transactions_order
-    @transaction_log.transactions_list.reverse
+    transaction_log.transactions_list.reverse
   end
 
   def update_credit_balance(amount)
