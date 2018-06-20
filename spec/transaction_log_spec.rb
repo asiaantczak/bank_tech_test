@@ -1,7 +1,6 @@
 require 'transaction_log'
 
 describe TransactionLog do
-
   let(:transaction) { double :transaction }
 
   describe 'initialize' do

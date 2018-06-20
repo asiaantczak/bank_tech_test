@@ -1,5 +1,4 @@
-class TransactionLog
-
+class TransactionLog # :nodoc:
   attr_reader :transactions_list
 
   def initialize
@@ -9,5 +8,4 @@ class TransactionLog
   def save_transaction(transaction)
     @transactions_list << transaction
   end
-
 end
