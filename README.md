@@ -1,4 +1,4 @@
-## Bank tech test
+# Bank tech test
 
 ### Requirements
 
