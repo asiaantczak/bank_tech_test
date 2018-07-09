@@ -102,4 +102,5 @@ Rspec + feature tests
 Other gems used
 --------
 Rubocop for detecting style offences
-SimpleCov for code coverage - (100.0%) covered
+SimpleCov for code coverage
+<img src="img/simple_cov.png">
